@@ -7,7 +7,7 @@ const router = createBrowserRouter([
     element: <SignIn />,
   },
   {
-    path: "/sign-up",
+    path: "/SP-Dashboard/sign-up",
     element: <SignUp />,
   },
 ]);

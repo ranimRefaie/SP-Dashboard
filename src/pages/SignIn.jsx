@@ -34,7 +34,7 @@ const SignIn = () => {
           Sign in
         </Link>
         <Link
-          to="/sign-up"
+          to="/SP-Dashboard/sign-up"
           className="w-1/2 underline text-center text-customBlue rounded text-base font-medium leading-6"
         >
           Sign up

@@ -7,7 +7,7 @@ const SignUp = () => {
       <div className="w-3/4 flex flex-col gap-5">
         <img src={logo} alt="" className="w-36 mb-4" />
 
-        <div className="flex justify-between">
+        <div className="flex gap-6">
           <div className="flex flex-col gap-4">
             <label className="text-sm font-medium leading-6 text-customBlack">
               First Name
@@ -29,7 +29,7 @@ const SignUp = () => {
           </div>
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex gap-6">
           <div className="flex flex-col gap-4">
             <label className="text-sm font-medium leading-6 text-customBlack">
               Father Name
@@ -51,7 +51,7 @@ const SignUp = () => {
           </div>
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex gap-6">
           <div className="flex flex-col gap-4">
             <label className="text-sm font-medium leading-6 text-customBlack">
               Email
@@ -74,7 +74,7 @@ const SignUp = () => {
           </div>
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex gap-6">
           <div className="flex flex-col  gap-4">
             <label className="text-sm font-medium leading-6 text-customBlack">
               CV
@@ -97,7 +97,7 @@ const SignUp = () => {
           </div>
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex gap-6">
           <div className="flex flex-col gap-4">
             <label className="text-sm font-medium leading-6 text-customBlack">
               User Name

@@ -1,30 +1,30 @@
 import { Link } from "react-router-dom";
-import logo from "../assets/Group 1000002151.svg";
-import bg_logo from "../assets/Group 8754.svg";
+import logo from "../assets/logo.svg";
+import bg_logo from "../assets/big-logo.svg";
 const SignIn = () => {
   return (
-    <div className="flex w-4/5 mx-auto justify-between mt-10">
-      <div className="w-3/4 flex flex-col gap-14">
+    <div className="flex w-10/12 mx-auto justify-between mt-10">
+      <div className="w-3/4 flex flex-col gap-8">
         <img src={logo} alt="" className="w-36" />
         <p className="text-2xl font-bold leading-9 text-customBlack">
           sign in to your dashboard
         </p>
-        <div className="flex flex-col w-1/2 gap-7">
+        <div className="flex flex-col w-1/2 gap-3 mt-5">
           <label className="text-sm font-medium leading-6 text-customBlack">
             Email
           </label>
           <input
             type="email"
-            className="h-10  border border-slate-300 rounded"
+            className="h-10 px-4  border border-slate-300 rounded outline-none ring-1 ring-[transparent] focus:ring-[#93c5fd]"
           />
         </div>
-        <div className="flex flex-col w-1/2 gap-7">
+        <div className="flex flex-col w-1/2 gap-3">
           <label className="text-sm font-medium leading-6 text-customBlack">
             Password
           </label>
           <input
             type="password"
-            className="h-10 border border-slate-300 rounded"
+            className="h-10 px-4 border border-slate-300 rounded outline-none ring-1 ring-[transparent] focus:ring-[#93c5fd]"
           />
         </div>
         <Link

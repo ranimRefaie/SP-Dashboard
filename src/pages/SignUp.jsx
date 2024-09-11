@@ -3,10 +3,9 @@ import bg_logo from "../assets/big-logo.svg";
 
 const SignUp = () => {
   return (
-    <div className="flex w-10/12 mx-auto gap-9 mt-10">
-      <form className="w-3/4  flex flex-col gap-5">
-        <img src={logo} alt="" className="w-36 mb-4" />
-
+    <div className="sign-up  w-10/12 flex flex-col mx-auto gap-9 mt-10">
+      <img src={logo} alt="" className="w-36 mb-4 z-10" />
+      <form className="w-3/4  flex flex-col gap-5 z-10 mx-auto items-center">
         <div className="flex gap-6">
           <div className="flex flex-col gap-3">
             <label className="text-sm font-medium leading-6 text-customBlack">
@@ -123,9 +122,6 @@ const SignUp = () => {
           Sign up
         </a>
       </form>
-      <div className="w-1/2 h-full">
-        <img src={bg_logo} alt="" className="w-full" />
-      </div>
     </div>
   );
 };

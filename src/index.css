@@ -36,34 +36,5 @@ body {
     color: #ffffff;
 }
 
-.p-stepper .p-stepper-header:has(~ .p-highlight) .p-stepper-separator {
-    background: rgb(38, 173, 140);    height: 10px;
-    border-radius: 10px;
-}
 
 
-.p-button {
-    display: flex;
-   
-    color: rgb(38, 173, 140);
-    font-size: 18px;
-    gap: 5px;
-}
-#next-btn{
-    flex-direction:row-reverse ;
-    align-self: flex-end;
-}
-
-.p-stepper-panels{
-height: 30rem;
-    display: flex;
-    flex-direction: column;
-}
-.p-stepper-content,.p-stepper-content span{
-   height: 100%;
-}
-.p-stepper-content span{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}

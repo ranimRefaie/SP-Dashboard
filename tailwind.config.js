@@ -11,7 +11,7 @@ export default {
       colors: {
         customBlue: 'rgba(0,163,255,1)',
         customBlack: 'rgba(66, 66, 66, 1)',
-        customgray:'#d9d9d9'
+        customgray:'#a9a9a9'
       }
     },
   },

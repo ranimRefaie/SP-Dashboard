@@ -27,7 +27,7 @@ const SignIn = () => {
         </div>
        
         <Link
-          to="/SP-Dashboard/overview"
+          to="/SP-Dashboard/dashboard"
           className="w-1/2 bg-customBlue text-slate-50 py-3 text-center rounded text-base font-medium"
         >
           Sign in

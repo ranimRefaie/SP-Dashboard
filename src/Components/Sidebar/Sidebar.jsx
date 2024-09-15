@@ -2,13 +2,19 @@ import { FaHome, FaEnvelope, FaUsers, FaStar } from 'react-icons/fa';
 import { useContext, createContext, useState } from "react"
 import { BsBoxArrowInLeft, BsBoxArrowInRight } from 'react-icons/bs';
 import logo from '../../assets/logo.svg'
+import { Link } from 'react-router-dom';
 const SidebarContext = createContext()
+
+
+
+
+
 
 export default function Sidebar({ children }) {
   const [expanded, setExpanded] = useState(true)
   
   return (
-    <aside className={`h-screen ${expanded ? "w-56 ml-3" : "w-20"}`}>
+    <aside className={`h-screen  ${expanded ? "w-56 ml-3" : "w-20"}`}>
       <nav className="h-full  flex flex-col bg-white border-r shadow-sm">
         <div className="p-4 pb-2 flex justify-between items-center">
         <img src={logo} className={`overflow-hidden transition-all ${
@@ -35,11 +41,12 @@ export default function Sidebar({ children }) {
   )
 }
 
-export function SidebarItem({ icon, text, active, alert }) {
+export function SidebarItem({ icon, text, active, alert,link }) {
   const { expanded } = useContext(SidebarContext)
   
   return (
-    <li
+    <Link
+    to={link}
       className={`
         relative flex items-center py-2 px-3 my-1 justify-center
         font-medium rounded-md cursor-pointer
@@ -79,6 +86,65 @@ export function SidebarItem({ icon, text, active, alert }) {
           {text}
         </div>
       )}
-    </li>
+    </Link>
+  
   )
 }
+
+
+
+/*
+function Sidebar() {
+  const [open, setOpen] = useState(true);
+  const Menus = [
+    { title: "Dashboard", src: "Chart_fill" },
+    { title: "Inbox", src: "Chat" },
+    { title: "Accounts", src: "User", gap: true },
+    { title: "Schedule ", src: "Calendar" },
+    { title: "Search", src: "Search" },
+    { title: "Analytics", src: "Chart" },
+    { title: "Files ", src: "Folder", gap: true },
+    { title: "Setting", src: "Setting" },
+  ];
+  return (
+
+<div className={` ${
+        open ? "w-72" : "w-20 "
+      }  h-screen  z-30 bg-white duration-300 rounded-xl border-r shadow-sm`}>
+<div
+      className=
+      'w-full h-full p-5 pt-10'
+    >
+    
+      <div className="flex gap-x-4 items-center relative">
+        <img
+          src={logo}
+          className={`cursor-pointer duration-500 ${
+            open && "rotate-[360deg]"
+          }`}
+        />
+               <span  className=' absolute cursor-pointer -right-5 -top-8'  onClick={() => setOpen(!open)}>{!open ? <MdOutlineKeyboardDoubleArrowRight size={25}/> : < MdOutlineKeyboardDoubleArrowLeft size={25}/>}</span>
+
+      </div>
+      <ul className="pt-6">
+        {Menus.map((Menu, index) => (
+          <li
+            key={index}
+            className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white  text-sm items-center gap-x-4 
+            ${Menu.gap ? "mt-9" : "mt-2"} ${
+              index === 0 && "bg-light-white"
+            } `}
+          >
+            <img src='' />
+            <span className={`${!open && "hidden"} origin-left duration-200`}>
+              {Menu.title}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+</div>
+  )
+}
+
+export default Sidebar*/

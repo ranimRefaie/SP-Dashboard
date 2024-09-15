@@ -9,9 +9,9 @@ const Dashboard = () => {
   return (
     <div className="flex">
       <Sidebar>
-        <SidebarItem icon={<MdOutlineDashboard size={20}/>} text='Dashboard' active/>
+        <SidebarItem icon={<MdOutlineDashboard size={20}/>} text='Dashboard' active link='/SP-Dashboard/dashboard'/>
         <SidebarItem icon={<MdOutlineAnalytics    size={20}/>} text='Analytics'/>
-        <SidebarItem icon={<VscGithubProject    size={20}/>} text='Projects'/>
+        <SidebarItem icon={<VscGithubProject    size={20}/>} text='Projects'  link='/SP-Dashboard/dashboard/projects'/>
         <SidebarItem icon={<PiUsersFourThin   size={20}/>} text='Stand Up'/>
         <SidebarItem icon={<FaMoneyBillWave size={20}/>} text='Financial dues'/>
       </Sidebar>

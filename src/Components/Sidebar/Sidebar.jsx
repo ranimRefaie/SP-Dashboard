@@ -1,60 +1,101 @@
-import { FaHome, FaEnvelope, FaUsers, FaStar } from 'react-icons/fa';
-import { useContext, createContext, useState } from "react"
-import { BsBoxArrowInLeft, BsBoxArrowInRight } from 'react-icons/bs';
-import logo from '../../assets/logo.svg'
-import { Link } from 'react-router-dom';
-const SidebarContext = createContext()
-
-
-
-
-
+import { FaHome, FaEnvelope, FaUsers, FaStar } from "react-icons/fa";
+import { useContext, createContext, useState } from "react";
+import { BsBoxArrowInLeft, BsBoxArrowInRight } from "react-icons/bs";
+import logo from "../../assets/logo.svg";
+import { Link } from "react-router-dom";
+const SidebarContext = createContext();
+import avatar from "../../assets/3d_avatar_26.png";
+import { GoListUnordered } from "react-icons/go";
 
 export default function Sidebar({ children }) {
-  const [expanded, setExpanded] = useState(true)
-  
-  return (
-    <aside className={`h-screen  ${expanded ? "w-56 ml-3" : "w-20"}`}>
-      <nav className="h-full  flex flex-col bg-white border-r shadow-sm">
-        <div className="p-4 pb-2 flex justify-between items-center">
-        <img src={logo} className={`overflow-hidden transition-all ${
-              expanded ? "w-32" : "w-0"
-            }`}
-            alt="" />
-       
+  const [expanded, setExpanded] = useState(true);
 
+  return (
+    <aside className={`h-screen  ${expanded ? "w-64" : "w-20"}`}>
+      <nav className="h-full  flex flex-col bg-white shadow-lg border-4 border-[#EFEFEF] shadow-[#EFEFEF] p-0">
+        <div className="p-4 pb-2 mt-3">
           <button
             onClick={() => setExpanded((curr) => !curr)}
-            className="p-1.5 rounded-lg  hover:bg-[#EFEFEF] mx-auto"
+            className="w-full flex justify-end p-1.5 rounded-lg  text-[#424242]  mx-auto"
           >
-            {expanded ? <BsBoxArrowInLeft size={25}/> : <BsBoxArrowInRight size={25}/>}
+            {expanded ? (
+              <GoListUnordered size={25} />
+            ) : (
+              <GoListUnordered size={25} />
+            )}
           </button>
+          <img
+            src={logo}
+            className={`overflow-hidden transition-all ${
+              expanded ? "w-40" : "w-0"
+            }`}
+            alt=""
+          />
         </div>
 
         <SidebarContext.Provider value={{ expanded }}>
-          <ul className="flex-1 px-3 mt-10">{children}</ul>
+          <ul className="flex-1 px-3 mt-10 ">{children}</ul>
         </SidebarContext.Provider>
 
-      
+        <div className=" bg-[#EFEFEF] rounded-[5px] w-[90%] p-4 mt-5  flex items-center gap-3  h-[40px] mx-auto">
+          <div className="w-[35px] h-[35px] rounded-full object-contain">
+            <img
+              src={avatar}
+              alt=""
+              className="w-[36px] h-[36px] rounded-full"
+            />
+          </div>
+          <div
+            className={`${
+              expanded ? "flex  flex-col  justify-center text-xs" : "hidden"
+            }`}
+          >
+            <h3 className="font-bold text-xs text-[#424242]">osama habka</h3>
+            <span className="font-semibold text-[10px] text-[#B3B3B3]">
+              Admin
+            </span>
+          </div>
+        </div>
+
+        <Link
+          to=""
+          className={`
+        relative flex items-center py-2 px-3 my-1 justify-center
+        font-medium rounded-md cursor-pointer
+        transition-colors group  mt-4
+       
+    `}
+        >
+          <span>
+            <BsBoxArrowInRight />
+          </span>
+          <span
+            className={`overflow-hidden transition-all ${
+              expanded ? "w-52 ml-3" : "hidden"
+            }`}
+          >
+            Sing Out
+          </span>
+        </Link>
       </nav>
     </aside>
-  )
+  );
 }
 
-export function SidebarItem({ icon, text, active, alert,link }) {
-  const { expanded } = useContext(SidebarContext)
-  
+export function SidebarItem({ icon, text, active, alert, link }) {
+  const { expanded } = useContext(SidebarContext);
+
   return (
     <Link
-    to={link}
+      to={link}
       className={`
         relative flex items-center py-2 px-3 my-1 justify-center
         font-medium rounded-md cursor-pointer
-        transition-colors group 
+        transition-colors group  mt-4
         ${
           active
-            ? "bg-[#EFEFEF]"
-            : "hover:bg-[#EFEFEF] "
+            ? "bg-[#EFEFEF] text-[#424242]"
+            : "hover:bg-[#EFEFEF] hover:text-[#424242]"
         }
     `}
     >
@@ -87,64 +128,5 @@ export function SidebarItem({ icon, text, active, alert,link }) {
         </div>
       )}
     </Link>
-  
-  )
+  );
 }
-
-
-
-/*
-function Sidebar() {
-  const [open, setOpen] = useState(true);
-  const Menus = [
-    { title: "Dashboard", src: "Chart_fill" },
-    { title: "Inbox", src: "Chat" },
-    { title: "Accounts", src: "User", gap: true },
-    { title: "Schedule ", src: "Calendar" },
-    { title: "Search", src: "Search" },
-    { title: "Analytics", src: "Chart" },
-    { title: "Files ", src: "Folder", gap: true },
-    { title: "Setting", src: "Setting" },
-  ];
-  return (
-
-<div className={` ${
-        open ? "w-72" : "w-20 "
-      }  h-screen  z-30 bg-white duration-300 rounded-xl border-r shadow-sm`}>
-<div
-      className=
-      'w-full h-full p-5 pt-10'
-    >
-    
-      <div className="flex gap-x-4 items-center relative">
-        <img
-          src={logo}
-          className={`cursor-pointer duration-500 ${
-            open && "rotate-[360deg]"
-          }`}
-        />
-               <span  className=' absolute cursor-pointer -right-5 -top-8'  onClick={() => setOpen(!open)}>{!open ? <MdOutlineKeyboardDoubleArrowRight size={25}/> : < MdOutlineKeyboardDoubleArrowLeft size={25}/>}</span>
-
-      </div>
-      <ul className="pt-6">
-        {Menus.map((Menu, index) => (
-          <li
-            key={index}
-            className={`flex  rounded-md p-2 cursor-pointer hover:bg-light-white  text-sm items-center gap-x-4 
-            ${Menu.gap ? "mt-9" : "mt-2"} ${
-              index === 0 && "bg-light-white"
-            } `}
-          >
-            <img src='' />
-            <span className={`${!open && "hidden"} origin-left duration-200`}>
-              {Menu.title}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </div>
-</div>
-  )
-}
-
-export default Sidebar*/

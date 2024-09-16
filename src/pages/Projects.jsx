@@ -4,6 +4,7 @@ import { MdOutlineDashboard } from "react-icons/md";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { LiaProjectDiagramSolid } from "react-icons/lia";
 import img_card from "../assets/img-card.svg";
+import { TbBusinessplan } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -43,7 +44,7 @@ const Projects = () => {
     }
   };
   return (
-    <div className="flex gap-2">
+    <div className="w-full h-screen flex gap-2">
       <Sidebar>
         <SidebarItem
           icon={<MdOutlineDashboard size={20} />}
@@ -62,12 +63,12 @@ const Projects = () => {
         />
         <SidebarItem icon={<MdOutlineDashboard size={20} />} text="Stand Up" />
         <SidebarItem
-          icon={<MdOutlineDashboard size={20} />}
+          icon={<TbBusinessplan size={20} />}
           text="Financial dues"
         />
       </Sidebar>
 
-      <div className="w-full">
+      <div className="flex-1 flex flex-col">
         <Navbar />
         <div className="px-16 w-[95%] bg-white mx-auto mt-8">
           <h1 className="text-3xl font-extrabold py-6">Your Projects</h1>

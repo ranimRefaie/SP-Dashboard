@@ -14,11 +14,11 @@ export default function Sidebar({ children }) {
   const [expanded, setExpanded] = useState(true);
 
   return (
-    <aside className={`h-screen ${expanded ? "w-64" : "w-20"}`}>
+    <aside className={`h-full ${expanded ? "w-64" : "w-20"}`}>
       <nav
         className={`h-full flex flex-col justify-between bg-white shadow-sm border-r border-[#EFEFEF] shadow-[#424242] pb-5  ${
           expanded ? "" : "items-center"
-        }`}
+        } `}
       >
         <div className="relative p-6 pb-2">
           <button
@@ -36,7 +36,7 @@ export default function Sidebar({ children }) {
           />
         </div>
 
-        <div className=" px-3   mx-6">
+        <div className="    mx-6">
           <SidebarContext.Provider value={{ expanded }}>
             <ul className=" ">{children}</ul>
           </SidebarContext.Provider>

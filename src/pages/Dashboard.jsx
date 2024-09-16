@@ -3,9 +3,11 @@ import Navbar from "../Components/Navbar/Navbar";
 import { MdOutlineDashboard } from "react-icons/md";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { LiaProjectDiagramSolid } from "react-icons/lia";
+import icon_dues from "../assets/evaluation.png";
+import { TbBusinessplan } from "react-icons/tb";
 const Dashboard = () => {
   return (
-    <div className="flex gap-2 bg-[#f8f9fa]">
+    <div className="w-full h-screen flex gap-2 bg-[#f8f9fa]">
       <Sidebar>
         <SidebarItem
           icon={<MdOutlineDashboard size={20} />}
@@ -24,11 +26,13 @@ const Dashboard = () => {
         />
         <SidebarItem icon={<MdOutlineDashboard size={20} />} text="Stand Up" />
         <SidebarItem
-          icon={<MdOutlineDashboard size={20} />}
+          icon={<TbBusinessplan size={20} />}
           text="Financial dues"
         />
       </Sidebar>
-      <Navbar />
+      <div className="flex-1 flex flex-col">
+        <Navbar />
+      </div>
     </div>
   );
 };

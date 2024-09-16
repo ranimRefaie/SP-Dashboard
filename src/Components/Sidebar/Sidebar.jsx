@@ -2,19 +2,22 @@ import { FaHome, FaEnvelope, FaUsers, FaStar } from "react-icons/fa";
 import { useContext, createContext, useState } from "react";
 import { BsBoxArrowInLeft, BsBoxArrowInRight } from "react-icons/bs";
 import logo from "../../assets/logo.svg";
+import min_logo from "../../assets/sm-logo.png";
 import { Link } from "react-router-dom";
 const SidebarContext = createContext();
 import avatar from "../../assets/3d_avatar_26.png";
 import { GoListUnordered } from "react-icons/go";
+import { MdSettings } from "react-icons/md";
+import { IoMdHelpCircleOutline } from "react-icons/io";
 
 export default function Sidebar({ children }) {
   const [expanded, setExpanded] = useState(true);
 
   return (
-    <aside className={`h-screen  ${expanded ? "w-64" : "w-20"}`}>
-      <nav className="h-full  flex flex-col bg-white shadow-lg border-4 border-[#EFEFEF] shadow-[#EFEFEF] p-0">
+    <aside className={`h-screen p-0 m-0  ${expanded ? "w-64" : "w-20"}`}>
+      <nav className="h-full  flex flex-col justify-between  bg-white shadow-lg border-4 border-[#EFEFEF] shadow-[#EFEFEF] p-0 rounded-md">
         <div className="p-4 pb-2 mt-3">
-          <button
+          {/* <button
             onClick={() => setExpanded((curr) => !curr)}
             className="w-full flex justify-end p-1.5 rounded-lg  text-[#424242]  mx-auto"
           >
@@ -23,60 +26,76 @@ export default function Sidebar({ children }) {
             ) : (
               <GoListUnordered size={25} />
             )}
-          </button>
+          </button> */}
           <img
-            src={logo}
+            onClick={() => setExpanded((curr) => !curr)}
+            src={expanded ? logo : min_logo}
             className={`overflow-hidden transition-all ${
-              expanded ? "w-40" : "w-0"
+              expanded ? "w-40" : "w-20"
             }`}
             alt=""
           />
         </div>
 
-        <SidebarContext.Provider value={{ expanded }}>
-          <ul className="flex-1 px-3 mt-10 ">{children}</ul>
-        </SidebarContext.Provider>
+        <div className="">
+          <SidebarContext.Provider value={{ expanded }}>
+            <ul className=" px-3  border-b border-[#EFEFEF]  mx-6">
+              {children}
+            </ul>
+          </SidebarContext.Provider>
 
-        <div className=" bg-[#EFEFEF] rounded-[5px] w-[90%] p-4 mt-5  flex items-center gap-3  h-[40px] mx-auto">
-          <div className="w-[35px] h-[35px] rounded-full object-contain">
-            <img
-              src={avatar}
-              alt=""
-              className="w-[36px] h-[36px] rounded-full"
-            />
-          </div>
-          <div
-            className={`${
-              expanded ? "flex  flex-col  justify-center text-xs" : "hidden"
-            }`}
-          >
-            <h3 className="font-bold text-xs text-[#424242]">osama habka</h3>
-            <span className="font-semibold text-[10px] text-[#B3B3B3]">
-              Admin
-            </span>
-          </div>
+          <SidebarContext.Provider value={{ expanded }}>
+            <ul className=" px-3 border-b border-[#EFEFEF] mx-6">
+              <SidebarItem
+                text="Get help"
+                icon={<IoMdHelpCircleOutline size={25} />}
+              />
+              <SidebarItem text="Setting" icon={<MdSettings size={25} />} />
+            </ul>
+          </SidebarContext.Provider>
         </div>
 
-        <Link
-          to=""
-          className={`
+        <div className="">
+          <div className=" rounded-[5px] w-[90%] p-4 mt-5  flex items-center gap-3  h-[40px]">
+            <div className="w-[35px] h-[35px] rounded-full object-contain">
+              <img
+                src={avatar}
+                alt=""
+                className="w-[36px] h-[36px] rounded-full"
+              />
+            </div>
+            <div
+              className={`${
+                expanded ? "flex  flex-col  justify-center text-xs" : "hidden"
+              }`}
+            >
+              <h3 className="font-bold text-xs text-[#424242]">osama habka</h3>
+              <span className="font-semibold text-[10px] text-[#B3B3B3]">
+                Admin
+              </span>
+            </div>
+          </div>
+          <Link
+            to=""
+            className={`
         relative flex items-center py-2 px-3 my-1 justify-center
-        font-medium rounded-md cursor-pointer
-        transition-colors group  mt-4
+        font-medium rounded-md cursor-pointer mx-6
+        transition-colors group  mt-4 text-[#C65D5D] text-xl
        
     `}
-        >
-          <span>
-            <BsBoxArrowInRight />
-          </span>
-          <span
-            className={`overflow-hidden transition-all ${
-              expanded ? "w-52 ml-3" : "hidden"
-            }`}
           >
-            Sing Out
-          </span>
-        </Link>
+            <span>
+              <BsBoxArrowInRight />
+            </span>
+            <span
+              className={`overflow-hidden  transition-all ${
+                expanded ? "w-52 ml-3" : "hidden"
+              }`}
+            >
+              Sing Out
+            </span>
+          </Link>
+        </div>
       </nav>
     </aside>
   );
@@ -91,7 +110,7 @@ export function SidebarItem({ icon, text, active, alert, link }) {
       className={`
         relative flex items-center py-2 px-3 my-1 justify-center
         font-medium rounded-md cursor-pointer
-        transition-colors group  mt-4
+        transition-colors group  mt-4 text-[#424242]
         ${
           active
             ? "bg-[#EFEFEF] text-[#424242]"

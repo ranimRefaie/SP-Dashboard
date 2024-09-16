@@ -4,9 +4,11 @@ import { MdOutlineDashboard, MdOutlineAnalytics } from "react-icons/md";
 import { FaMoneyBillWave } from "react-icons/fa";
 import { VscGithubProject } from "react-icons/vsc";
 import { PiUsersFourThin } from "react-icons/pi";
+import { TbBrandGoogleAnalytics } from "react-icons/tb";
+import { LiaProjectDiagramSolid } from "react-icons/lia";
 const Dashboard = () => {
   return (
-    <div className="flex bg-[#EFEFEF]">
+    <div className="flex ">
       <Sidebar>
         <SidebarItem
           icon={<MdOutlineDashboard size={20} />}
@@ -14,9 +16,12 @@ const Dashboard = () => {
           active
           link="/SP-Dashboard/dashboard"
         />
-        <SidebarItem icon={<MdOutlineDashboard size={20} />} text="Analytics" />
         <SidebarItem
-          icon={<MdOutlineDashboard size={20} />}
+          icon={<TbBrandGoogleAnalytics size={20} />}
+          text="Analytics"
+        />
+        <SidebarItem
+          icon={<LiaProjectDiagramSolid size={20} />}
           text="Projects"
           link="/SP-Dashboard/dashboard/projects"
         />

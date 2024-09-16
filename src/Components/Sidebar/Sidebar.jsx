@@ -1,34 +1,33 @@
-import { FaHome, FaEnvelope, FaUsers, FaStar } from "react-icons/fa";
 import { useContext, createContext, useState } from "react";
-import { BsBoxArrowInLeft, BsBoxArrowInRight } from "react-icons/bs";
+import { BsBoxArrowInRight } from "react-icons/bs";
 import logo from "../../assets/logo.svg";
 import min_logo from "../../assets/sm-logo.png";
 import { Link } from "react-router-dom";
 const SidebarContext = createContext();
 import avatar from "../../assets/3d_avatar_26.png";
-import { GoListUnordered } from "react-icons/go";
 import { MdSettings } from "react-icons/md";
 import { IoMdHelpCircleOutline } from "react-icons/io";
+import { FaAlignJustify } from "react-icons/fa";
+import { FaAlignLeft } from "react-icons/fa";
 
 export default function Sidebar({ children }) {
   const [expanded, setExpanded] = useState(true);
 
   return (
-    <aside className={`h-screen p-0 m-0  ${expanded ? "w-64" : "w-20"}`}>
-      <nav className="h-full  flex flex-col justify-between  bg-white shadow-lg border-4 border-[#EFEFEF] shadow-[#EFEFEF] p-0 rounded-md">
-        <div className="p-4 pb-2 mt-3">
-          {/* <button
+    <aside className={`h-screen ${expanded ? "w-64" : "w-20"}`}>
+      <nav
+        className={`h-full flex flex-col justify-between bg-white shadow-sm border-r border-[#EFEFEF] shadow-[#424242] pb-5  ${
+          expanded ? "" : "items-center"
+        }`}
+      >
+        <div className="relative p-6 pb-2">
+          <button
             onClick={() => setExpanded((curr) => !curr)}
-            className="w-full flex justify-end p-1.5 rounded-lg  text-[#424242]  mx-auto"
+            className="absolute  -right-11 rounded-lg  text-[#424242]  mx-auto"
           >
-            {expanded ? (
-              <GoListUnordered size={25} />
-            ) : (
-              <GoListUnordered size={25} />
-            )}
-          </button> */}
+            {expanded ? <FaAlignLeft size={25} /> : <FaAlignLeft size={25} />}
+          </button>
           <img
-            onClick={() => setExpanded((curr) => !curr)}
             src={expanded ? logo : min_logo}
             className={`overflow-hidden transition-all ${
               expanded ? "w-40" : "w-20"
@@ -37,15 +36,13 @@ export default function Sidebar({ children }) {
           />
         </div>
 
-        <div className="">
+        <div className=" px-3   mx-6">
           <SidebarContext.Provider value={{ expanded }}>
-            <ul className=" px-3  border-b border-[#EFEFEF]  mx-6">
-              {children}
-            </ul>
+            <ul className=" ">{children}</ul>
           </SidebarContext.Provider>
 
           <SidebarContext.Provider value={{ expanded }}>
-            <ul className=" px-3 border-b border-[#EFEFEF] mx-6">
+            <ul className="  border-t border-[#EFEFEF]">
               <SidebarItem
                 text="Get help"
                 icon={<IoMdHelpCircleOutline size={25} />}
@@ -55,13 +52,13 @@ export default function Sidebar({ children }) {
           </SidebarContext.Provider>
         </div>
 
-        <div className="">
+        <div className="border-t border-[#EFEFEF] mx-6 ">
           <div className=" rounded-[5px] w-[90%] p-4 mt-5  flex items-center gap-3  h-[40px]">
             <div className="w-[35px] h-[35px] rounded-full object-contain">
               <img
                 src={avatar}
                 alt=""
-                className="w-[36px] h-[36px] rounded-full"
+                className="w-[40px] h-[37px] rounded-full"
               />
             </div>
             <div
@@ -78,14 +75,14 @@ export default function Sidebar({ children }) {
           <Link
             to=""
             className={`
-        relative flex items-center py-2 px-3 my-1 justify-center
+        relative flex items-center py-2  my-1 justify-center
         font-medium rounded-md cursor-pointer mx-6
-        transition-colors group  mt-4 text-[#C65D5D] text-xl
+        transition-colors group  mt-4 text-[#C65D5D] 
        
     `}
           >
             <span>
-              <BsBoxArrowInRight />
+              <BsBoxArrowInRight size={25} />
             </span>
             <span
               className={`overflow-hidden  transition-all ${
@@ -113,9 +110,10 @@ export function SidebarItem({ icon, text, active, alert, link }) {
         transition-colors group  mt-4 text-[#424242]
         ${
           active
-            ? "bg-[#EFEFEF] text-[#424242]"
+            ? "bg-[#424242] text-[#fff]"
             : "hover:bg-[#EFEFEF] hover:text-[#424242]"
         }
+
     `}
     >
       <span>{icon}</span>
@@ -126,26 +124,6 @@ export function SidebarItem({ icon, text, active, alert, link }) {
       >
         {text}
       </span>
-      {alert && (
-        <div
-          className={`absolute right-2 w-2 h-2 rounded bg-indigo-400 ${
-            expanded ? "" : "top-2"
-          }`}
-        />
-      )}
-
-      {!expanded && (
-        <div
-          className={`
-          absolute left-full rounded-md px-2 py-1 ml-6 
-          bg-[#EFEFEF]  text-sm
-          invisible opacity-20 -translate-x-3 transition-all
-          group-hover:visible group-hover:opacity-100 group-hover:translate-x-0
-      `}
-        >
-          {text}
-        </div>
-      )}
     </Link>
   );
 }

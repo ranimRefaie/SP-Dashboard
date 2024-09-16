@@ -4,7 +4,8 @@ body {
     font-family: "Poppins", sans-serif;
     padding: 0;
     margin: 0;
-    box-sizing: border-box
+    box-sizing: border-box;
+    background-color: #f8f9fa
 }
 
 @tailwind base;

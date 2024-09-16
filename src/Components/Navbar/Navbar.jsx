@@ -4,7 +4,7 @@ const Navbar = () => {
   return (
     <div className="w-full h-20 left-[260px] p-2  border-b border-[#EFEFEF] bg-white">
       <div className="flex w-full h-full justify-between items-center">
-        <div className="relative  w-[52%] h-[48px]">
+        <div className="relative  w-[52%] h-[48px] ml-[5%]">
           <input
             type="search"
             placeholder="Search  projects ,name"

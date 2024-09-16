@@ -1,12 +1,11 @@
-import React, { useState } from "react";
 import Sidebar, { SidebarItem } from "../Components/Sidebar/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
-import { MdOutlineDashboard, MdOutlineAnalytics } from "react-icons/md";
-import { FaMoneyBillWave } from "react-icons/fa";
-import { VscGithubProject } from "react-icons/vsc";
-import { PiUsersFourThin } from "react-icons/pi";
+import { MdOutlineDashboard } from "react-icons/md";
+import { TbBrandGoogleAnalytics } from "react-icons/tb";
+import { LiaProjectDiagramSolid } from "react-icons/lia";
 import img_card from "../assets/img-card.svg";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Projects = () => {
   const [projects, setProjects] = useState([
@@ -44,23 +43,26 @@ const Projects = () => {
     }
   };
   return (
-    <div className="flex bg-[#EFEFEF]">
+    <div className="flex gap-2">
       <Sidebar>
         <SidebarItem
           icon={<MdOutlineDashboard size={20} />}
           text="Dashboard"
           link="/SP-Dashboard/dashboard"
         />
-        <SidebarItem icon={<MdOutlineAnalytics size={20} />} text="Analytics" />
         <SidebarItem
-          icon={<VscGithubProject size={20} />}
-          text="Projects"
-          active
-          link="/SP-Dashboard/dashboard/projects"
+          icon={<TbBrandGoogleAnalytics size={20} />}
+          text="Analytics"
         />
-        <SidebarItem icon={<PiUsersFourThin size={20} />} text="Stand Up" />
         <SidebarItem
-          icon={<FaMoneyBillWave size={20} />}
+          icon={<LiaProjectDiagramSolid size={20} />}
+          text="Projects"
+          link="/SP-Dashboard/dashboard/projects"
+          active
+        />
+        <SidebarItem icon={<MdOutlineDashboard size={20} />} text="Stand Up" />
+        <SidebarItem
+          icon={<MdOutlineDashboard size={20} />}
           text="Financial dues"
         />
       </Sidebar>

@@ -1,14 +1,11 @@
 import Sidebar, { SidebarItem } from "../Components/Sidebar/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
-import { MdOutlineDashboard, MdOutlineAnalytics } from "react-icons/md";
-import { FaMoneyBillWave } from "react-icons/fa";
-import { VscGithubProject } from "react-icons/vsc";
-import { PiUsersFourThin } from "react-icons/pi";
+import { MdOutlineDashboard } from "react-icons/md";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { LiaProjectDiagramSolid } from "react-icons/lia";
 const Dashboard = () => {
   return (
-    <div className="flex ">
+    <div className="flex gap-2 bg-[#f8f9fa]">
       <Sidebar>
         <SidebarItem
           icon={<MdOutlineDashboard size={20} />}

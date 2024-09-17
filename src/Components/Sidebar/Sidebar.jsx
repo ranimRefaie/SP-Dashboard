@@ -4,18 +4,60 @@ import logo from "../../assets/logo.svg";
 import min_logo from "../../assets/sm-logo.png";
 import { Link } from "react-router-dom";
 const SidebarContext = createContext();
-import avatar from "../../assets/3d_avatar_26.png";
 import { MdSettings } from "react-icons/md";
 import { IoMdHelpCircleOutline } from "react-icons/io";
-import { FaAlignJustify } from "react-icons/fa";
 import { FaAlignLeft } from "react-icons/fa";
 import { useSidebar } from "../../Contaxt/Contaxt";
+import { MdOutlineDashboard } from "react-icons/md";
+import { TbBrandGoogleAnalytics } from "react-icons/tb";
+import { LiaProjectDiagramSolid } from "react-icons/lia";
+import { TbBusinessplan } from "react-icons/tb";
 
 export default function Sidebar({ children }) {
+  const [activeLink, setActiveLink] = useState(0);
+  const handleLinkClick = (index) => {
+    setActiveLink(index);
+  };
   const { expanded, setExpanded } = useSidebar();
+  const Item_Sidebar = [
+    {
+      id: 1,
+      path: "/SP-Dashboard/dashboard",
+      name: "Dashboard",
+      icon: <MdOutlineDashboard size={20} />,
+    },
+    {
+      id: 2,
+      path: "",
+      name: "Analytics",
+      icon: <TbBrandGoogleAnalytics size={20} />,
+    },
+    {
+      id: 3,
+      path: "/SP-Dashboard/dashboard/projects",
+      name: "Projects",
+      icon: <LiaProjectDiagramSolid size={20} />,
+    },
+    {
+      id: 4,
+      path: "",
+      name: "Stand Up",
+      icon: <MdOutlineDashboard size={20} />,
+    },
+    {
+      id: 5,
+      path: "",
+      name: "Financial dues",
+      icon: <TbBusinessplan size={20} />,
+    },
+  ];
 
   return (
-    <aside className={`h-full ${expanded ? "w-64" : "w-20"}`}>
+    <aside
+      className={`fixed left-0 top-0 z-10 h-screen bg-[#ffffff] ${
+        expanded ? "w-64" : "w-20"
+      }`}
+    >
       <nav
         className={`h-full flex flex-col justify-between bg-white shadow-sm border-r border-[#EFEFEF] shadow-[#424242] pb-5  ${
           expanded ? "" : "items-center"
@@ -23,10 +65,10 @@ export default function Sidebar({ children }) {
       >
         <div className="relative p-6 pb-2">
           <button
-            onClick={() => setExpanded((curr) => !curr)}
-            className="absolute top-5  -right-11 rounded-lg  text-[#424242]  mx-auto"
+            onClick={() => setExpanded((x) => !x)}
+            className="absolute top-2 -right-11 rounded-lg  text-[#424242]  mx-auto"
           >
-            {expanded ? <FaAlignLeft size={25} /> : <FaAlignLeft size={25} />}
+            <FaAlignLeft size={20} />
           </button>
           <img
             src={expanded ? logo : min_logo}
@@ -37,10 +79,31 @@ export default function Sidebar({ children }) {
           />
         </div>
 
-        <div className="    mx-6">
-          <SidebarContext.Provider value={{ expanded }}>
-            <ul className=" ">{children}</ul>
-          </SidebarContext.Provider>
+        <div className="mx-6">
+          <ul className=" ">
+            {Item_Sidebar.map((link, index) => (
+              <Link
+                key={index}
+                to={link.path}
+                className={`relative flex items-center py-2 px-3 my-1 justify-center font-medium rounded-md cursor-pointer transition-colors group mt-4 text-[#424242]   ${
+                  activeLink === index
+                    ? "bg-sky-400 text-[#ffffff]"
+                    : "hover:bg-[#EFEFEF] hover:text-[#424242]"
+                }
+                `}
+                onClick={() => handleLinkClick(index)}
+              >
+                <span>{link.icon}</span>
+                <span
+                  className={`overflow-hidden transition-all ${
+                    expanded ? "w-52 ml-3" : "hidden"
+                  }`}
+                >
+                  {link.name}
+                </span>
+              </Link>
+            ))}
+          </ul>
 
           <SidebarContext.Provider value={{ expanded }}>
             <ul className="  border-t border-[#EFEFEF]">
@@ -86,7 +149,7 @@ export function SidebarItem({ icon, text, active, link }) {
   return (
     <Link
       to={link}
-      className={`relative flex items-center py-2 px-3 my-1 justify-center font-medium rounded-md cursor-pointer transition-colors group mt-4 text-blue-950 ${
+      className={`relative flex items-center py-2 px-3 my-1 justify-center font-medium rounded-md cursor-pointer transition-colors group mt-4 text-[#424242] ${
         active
           ? "bg-sky-400 text-[#ffffff]"
           : "hover:bg-[#EFEFEF] hover:text-[#424242]"

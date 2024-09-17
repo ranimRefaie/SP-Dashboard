@@ -9,9 +9,10 @@ import { MdSettings } from "react-icons/md";
 import { IoMdHelpCircleOutline } from "react-icons/io";
 import { FaAlignJustify } from "react-icons/fa";
 import { FaAlignLeft } from "react-icons/fa";
+import { useSidebar } from "../../Contaxt/Contaxt";
 
 export default function Sidebar({ children }) {
-  const [expanded, setExpanded] = useState(true);
+  const { expanded, setExpanded } = useSidebar();
 
   return (
     <aside className={`h-full ${expanded ? "w-64" : "w-20"}`}>
@@ -23,7 +24,7 @@ export default function Sidebar({ children }) {
         <div className="relative p-6 pb-2">
           <button
             onClick={() => setExpanded((curr) => !curr)}
-            className="absolute  -right-11 rounded-lg  text-[#424242]  mx-auto"
+            className="absolute top-5  -right-11 rounded-lg  text-[#424242]  mx-auto"
           >
             {expanded ? <FaAlignLeft size={25} /> : <FaAlignLeft size={25} />}
           </button>
@@ -53,27 +54,8 @@ export default function Sidebar({ children }) {
         </div>
 
         <div className="border-t border-[#EFEFEF] mx-6 ">
-          <div className=" rounded-[5px] w-[90%] p-4 mt-5  flex items-center gap-3  h-[40px]">
-            <div className="w-[35px] h-[35px] rounded-full object-contain">
-              <img
-                src={avatar}
-                alt=""
-                className="w-[40px] h-[37px] rounded-full"
-              />
-            </div>
-            <div
-              className={`${
-                expanded ? "flex  flex-col  justify-center text-xs" : "hidden"
-              }`}
-            >
-              <h3 className="font-bold text-xs text-[#424242]">osama habka</h3>
-              <span className="font-semibold text-[10px] text-[#B3B3B3]">
-                Admin
-              </span>
-            </div>
-          </div>
           <Link
-            to=""
+            to="/SP-Dashboard"
             className={`
         relative flex items-center py-2  my-1 justify-center
         font-medium rounded-md cursor-pointer mx-6
@@ -98,23 +80,17 @@ export default function Sidebar({ children }) {
   );
 }
 
-export function SidebarItem({ icon, text, active, alert, link }) {
-  const { expanded } = useContext(SidebarContext);
+export function SidebarItem({ icon, text, active, link }) {
+  const { expanded } = useSidebar();
 
   return (
     <Link
       to={link}
-      className={`
-        relative flex items-center py-2 px-3 my-1 justify-center
-        font-medium rounded-md cursor-pointer
-        transition-colors group  mt-4 text-[#424242]
-        ${
-          active
-            ? "bg-[#424242] text-[#fff]"
-            : "hover:bg-[#EFEFEF] hover:text-[#424242]"
-        }
-
-    `}
+      className={`relative flex items-center py-2 px-3 my-1 justify-center font-medium rounded-md cursor-pointer transition-colors group mt-4 text-blue-950 ${
+        active
+          ? "bg-sky-400 text-[#ffffff]"
+          : "hover:bg-[#EFEFEF] hover:text-[#424242]"
+      }`}
     >
       <span>{icon}</span>
       <span

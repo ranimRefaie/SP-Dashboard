@@ -6,6 +6,7 @@ import { useState } from "react";
 import { AiOutlineMore } from "react-icons/ai";
 import { VscAdd } from "react-icons/vsc";
 import { useSidebar } from "../Context/Context";
+import avatar from "../assets/3d_avatar_26.png";
 
 const Projects = () => {
   const { expanded, setExpanded } = useSidebar();
@@ -48,71 +49,73 @@ const Projects = () => {
       <Sidebar />
       <div className="w-full">
         <Navbar />
-        <div
-          className={`flex flex-col mt-[40px]  ${expanded ? "ml-64" : "ml-20"}`}
-        >
+        <div className={`flex flex-col mt-20  ${expanded ? "ml-64" : "ml-20"}`}>
           <div className="ml-10">
             <h1 className="text-3xl font-extrabold py-6">Your Projects</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           </div>
-        </div>
 
-        <div className="flex-wrap w-[50%]  flex gap-4 pt-8 mx-auto">
-          {projects.map((project) => (
-            <div
-              key={project.id}
-              className="bg-[#ffffff] cursor-pointer w-[45%] shadow-lg rounded-xl h-[220px]"
-              onClick={() => handleMenuToggle(project)}
-            >
-              <img
-                src={img_card}
-                alt=""
-                className="w-[90%] h-[140px] mx-auto mt-3 rounded-lg"
-              />
-              <div className="flex justify-between pt-2 items-center">
-                <div className="flex flex-col items-start">
-                  <input
-                    className="border-0 bg-transparent outline-none rounded-lg w-[87%] mx-4"
-                    value={project.name}
-                    readOnly
-                  />
-                  <div className="bg-[#FFB3B3] w-1/4 text-[#C65D5D] rounded-[10px] p-1 text-xs ml-3 text-center">
-                    {project.status}
+          <div className={`flex-wrap  flex gap-4 pt-8 ml-10`}>
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                className="bg-[#ffffff] cursor-pointer w-80 shadow-lg rounded-xl mt-4 pb-3"
+                onClick={() => handleMenuToggle(project)}
+              >
+                <img
+                  src={img_card}
+                  alt=""
+                  className="w-[90%] h-[140px] mx-auto mt-3 rounded-lg"
+                />
+                <div className="flex justify-between pt-2 items-center">
+                  <div className="flex  items-center ml-3">
+                    <img
+                      src={avatar}
+                      alt=""
+                      className="w-[35px] h-[35px] rounded-full"
+                    />
+                    <div className="">
+                      <input
+                        className="border-0 bg-transparent outline-none rounded-lg w-[87%] mx-4"
+                        value={project.name}
+                        readOnly
+                      />
+                    </div>
+                  </div>
+                  <div className="relative pr-2">
+                    <AiOutlineMore />
+                    {showMenu &&
+                      selectedProject &&
+                      selectedProject.id === project.id && (
+                        <div className="absolute -right-24 top-4 bg-white rounded-md shadow-md z-10 ri">
+                          <ul className="p-2">
+                            <li
+                              onClick={handleDeleteProject}
+                              className="hover:bg-[#ff5c5c] hover:text-white cursor-pointer p-2"
+                            >
+                              Delete
+                            </li>
+                            <Link
+                              to="/SP-Dashboard/dashboard/projects/board"
+                              onClick={handleGoToBoard}
+                              className="hover:bg-[#84be82] hover:text-white cursor-pointer p-2"
+                            >
+                              Go Board
+                            </Link>
+                          </ul>
+                        </div>
+                      )}
                   </div>
                 </div>
-                <div className="relative pr-2">
-                  <AiOutlineMore />
-                  {showMenu &&
-                    selectedProject &&
-                    selectedProject.id === project.id && (
-                      <div className="absolute -right-24 top-4 bg-white rounded-md shadow-md z-10 ri">
-                        <ul className="p-2">
-                          <li
-                            onClick={handleDeleteProject}
-                            className="hover:bg-[#ff5c5c] hover:text-white cursor-pointer p-2"
-                          >
-                            Delete
-                          </li>
-                          <Link
-                            to="/SP-Dashboard/dashboard/projects/board"
-                            onClick={handleGoToBoard}
-                            className="hover:bg-[#84be82] hover:text-white cursor-pointer p-2"
-                          >
-                            Go Board
-                          </Link>
-                        </ul>
-                      </div>
-                    )}
-                </div>
               </div>
-            </div>
-          ))}
-          <button
-            onClick={addProject}
-            className="w-[45%] h-[220px] flex justify-center items-center bg-[#ffffff]  shadow-lg rounded-xl cursor-pointer"
-          >
-            <VscAdd size={70} />
-          </button>
+            ))}
+            <button
+              onClick={addProject}
+              className="w-80 h-[220px] flex justify-center items-center bg-[#ffffff]  shadow-lg rounded-xl cursor-pointer mt-4"
+            >
+              <VscAdd size={70} />
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -120,3 +123,9 @@ const Projects = () => {
 };
 
 export default Projects;
+
+{
+  /* <div className="bg-[#FFB3B3] w-1/4 text-[#C65D5D] rounded-[10px] p-1 text-xs ml-3 text-center">
+                    {project.status}
+                  </div> */
+}

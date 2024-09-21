@@ -15,7 +15,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed right-0 h-[40px] border-b border-[#EFEFEF] bg-white ${
+      className={`fixed right-0 h-10 border-b border-[#EFEFEF] bg-white ${
         expanded ? "left-64" : "left-20"
       }`}
     >

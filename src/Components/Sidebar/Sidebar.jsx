@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 const SidebarContext = createContext();
 import { MdSettings } from "react-icons/md";
 import { IoMdHelpCircleOutline } from "react-icons/io";
-import { FaAlignLeft } from "react-icons/fa";
-import { useSidebar } from "../../Contaxt/Contaxt";
+
+import { useSidebar } from "../../Context/Context";
 import { MdOutlineDashboard } from "react-icons/md";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { LiaProjectDiagramSolid } from "react-icons/lia";
@@ -53,8 +53,8 @@ export default function Sidebar({ children }) {
   ];
 
   return (
-    <aside
-      className={`fixed left-0 top-0 z-10 h-screen bg-[#ffffff] ${
+    <div
+      className={`h-screen fixed inset-y-0 left-0 bg-[#ffffff] ${
         expanded ? "w-64" : "w-20"
       }`}
     >
@@ -64,12 +64,6 @@ export default function Sidebar({ children }) {
         } `}
       >
         <div className="relative p-6 pb-2">
-          <button
-            onClick={() => setExpanded((x) => !x)}
-            className="absolute top-2 -right-11 rounded-lg  text-[#424242]  mx-auto"
-          >
-            <FaAlignLeft size={20} />
-          </button>
           <img
             src={expanded ? logo : min_logo}
             className={`overflow-hidden transition-all ${
@@ -139,7 +133,7 @@ export default function Sidebar({ children }) {
           </Link>
         </div>
       </nav>
-    </aside>
+    </div>
   );
 }
 

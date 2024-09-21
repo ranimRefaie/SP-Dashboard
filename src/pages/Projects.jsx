@@ -1,22 +1,22 @@
-import Sidebar, { SidebarItem } from "../Components/Sidebar/Sidebar";
+import Sidebar from "../Components/Sidebar/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
-import { MdOutlineDashboard } from "react-icons/md";
-import { TbBrandGoogleAnalytics } from "react-icons/tb";
-import { LiaProjectDiagramSolid } from "react-icons/lia";
-import img_card from "../assets/img-card.svg";
-import { TbBusinessplan } from "react-icons/tb";
+import img_card from "../assets/638a92cf349604581a35fe75_263a75529a1752b75d64f9f21fd07c92-3-2.jpeg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { AiOutlineMore } from "react-icons/ai";
+import { VscAdd } from "react-icons/vsc";
+import { useSidebar } from "../Context/Context";
 
 const Projects = () => {
+  const { expanded, setExpanded } = useSidebar();
   const [projects, setProjects] = useState([
-    { id: 1, name: "project01", status: "At Risk" },
+    { id: 1, name: "project 1", status: "At Risk" },
   ]);
 
   const addProject = () => {
     const newProject = {
       id: projects.length + 1,
-      name: `project0${projects.length + 2}`,
+      name: `project ${projects.length + 1}`,
       status: "At Risk",
     };
     setProjects([...projects, newProject]);
@@ -44,34 +44,75 @@ const Projects = () => {
     }
   };
   return (
-    <div>
-      <Sidebar>
-        <SidebarItem
-          icon={<MdOutlineDashboard size={20} />}
-          text="Dashboard"
-          link="/SP-Dashboard/dashboard"
-        />
-        <SidebarItem
-          icon={<TbBrandGoogleAnalytics size={20} />}
-          text="Analytics"
-        />
-        <SidebarItem
-          icon={<LiaProjectDiagramSolid size={20} />}
-          text="Projects"
-          link="/SP-Dashboard/dashboard/projects"
-          active
-        />
-        <SidebarItem icon={<MdOutlineDashboard size={20} />} text="Stand Up" />
-        <SidebarItem
-          icon={<TbBusinessplan size={20} />}
-          text="Financial dues"
-        />
-      </Sidebar>
-
+    <div className="w-full flex">
+      <Sidebar />
       <div className="w-full">
         <Navbar />
-        <div className="w-full">
-          <div className="flex w-[80%] justify-center items-center bg-white mx-auto"></div>
+        <div
+          className={`flex flex-col mt-[40px]  ${expanded ? "ml-64" : "ml-20"}`}
+        >
+          <div className="ml-10">
+            <h1 className="text-3xl font-extrabold py-6">Your Projects</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+        </div>
+
+        <div className="flex-wrap w-[50%]  flex gap-4 pt-8 mx-auto">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="bg-[#ffffff] cursor-pointer w-[45%] shadow-lg rounded-xl h-[220px]"
+              onClick={() => handleMenuToggle(project)}
+            >
+              <img
+                src={img_card}
+                alt=""
+                className="w-[90%] h-[140px] mx-auto mt-3 rounded-lg"
+              />
+              <div className="flex justify-between pt-2 items-center">
+                <div className="flex flex-col items-start">
+                  <input
+                    className="border-0 bg-transparent outline-none rounded-lg w-[87%] mx-4"
+                    value={project.name}
+                    readOnly
+                  />
+                  <div className="bg-[#FFB3B3] w-1/4 text-[#C65D5D] rounded-[10px] p-1 text-xs ml-3 text-center">
+                    {project.status}
+                  </div>
+                </div>
+                <div className="relative pr-2">
+                  <AiOutlineMore />
+                  {showMenu &&
+                    selectedProject &&
+                    selectedProject.id === project.id && (
+                      <div className="absolute -right-24 top-4 bg-white rounded-md shadow-md z-10 ri">
+                        <ul className="p-2">
+                          <li
+                            onClick={handleDeleteProject}
+                            className="hover:bg-[#ff5c5c] hover:text-white cursor-pointer p-2"
+                          >
+                            Delete
+                          </li>
+                          <Link
+                            to="/SP-Dashboard/dashboard/projects/board"
+                            onClick={handleGoToBoard}
+                            className="hover:bg-[#84be82] hover:text-white cursor-pointer p-2"
+                          >
+                            Go Board
+                          </Link>
+                        </ul>
+                      </div>
+                    )}
+                </div>
+              </div>
+            </div>
+          ))}
+          <button
+            onClick={addProject}
+            className="w-[45%] h-[220px] flex justify-center items-center bg-[#ffffff]  shadow-lg rounded-xl cursor-pointer"
+          >
+            <VscAdd size={70} />
+          </button>
         </div>
       </div>
     </div>
@@ -79,84 +120,3 @@ const Projects = () => {
 };
 
 export default Projects;
-
-/*
-<div className="w-[80%] mx-auto bg-white mt-8">
-<h1 className="text-3xl font-extrabold py-6">Your Projects</h1>
-<button
-  onClick={addProject}
-  className="w-[22%] float-end bg-[#00A3FF] text-white rounded-[4px] h-[43px] text-center"
->
-  Add new project
-</button>
-<div className="flex-wrap justify-start flex gap-4 pt-8">
-  {projects.map((project) => (
-    <div
-      key={project.id}
-      title="Double click for details"
-      className="bg-[#95A4FC4D] cursor-pointer w-[30%] rounded-xl h-[220px]"
-      onClick={() => handleMenuToggle(project)}
-    >
-      <img
-        src={img_card}
-        alt=""
-        className="w-[50%] h-[140px] mx-auto rounded-lg"
-      />
-      <div className="flex justify-between pt-2 items-center">
-        <div className="flex flex-col items-start">
-          <input
-            className="border-0 bg-transparent outline-none rounded-lg w-[87%] mx-4"
-            value={project.name}
-            readOnly
-          />
-          <div className="bg-[#FFB3B3] w-1/4 text-[#C65D5D] rounded-[10px] p-1 text-xs ml-3 text-center">
-            {project.status}
-          </div>
-        </div>
-        <div className="relative pr-2">
-          <svg
-            stroke="currentColor"
-            fill="currentColor"
-            strokeWidth="0"
-            viewBox="0 0 24 24"
-            className="cursor-pointer"
-            id="basic-button"
-            aria-haspopup="true"
-            height="1em"
-            width="1em"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g id="Menu_Kebab">
-              <path d="M14.5,12c0,1.38 -1.12,2.5 -2.5,2.5c-1.38,-0 -2.5,-1.12 -2.5,-2.5c0,-1.38 1.12,-2.5 2.5,-2.5c1.38,-0 2.5,1.12 2.5,2.5Zm-1,-0c0,-0.828 -0.672,-1.5 -1.5,-1.5c-0.828,-0 -1.5,0.672 -1.5,1.5c0,0.828 0.672,1.5 1.5,1.5c0.828,-0 1.5,-0.672 1.5,-1.5Z"></path>
-              <path d="M14.5,4.563c0,1.38 -1.12,2.5 -2.5,2.5c-1.38,-0 -2.5,-1.12 -2.5,-2.5c0,-1.38 1.12,-2.5 2.5,-2.5c1.38,-0 2.5,1.12 2.5,2.5Zm-1,-0c0,-0.828 -0.672,-1.5 -1.5,-1.5c-0.828,-0 -1.5,0.672 -1.5,1.5c0,0.828 0.672,1.5 1.5,1.5c0.828,-0 1.5,-0.672 1.5,-1.5Z"></path>
-              <path d="M14.5,19.437c0,1.38 -1.12,2.5 -2.5,2.5c-1.38,0 -2.5,-1.12 -2.5,-2.5c0,-1.38 1.12,-2.5 2.5,-2.5c1.38,0 2.5,1.12 2.5,2.5Zm-1,0c0,-0.828 -0.672,-1.5 -1.5,-1.5c-0.828,0 -1.5,0.672 -1.5,1.5c0,0.828 0.672,1.5 1.5,1.5c0.828,0 1.5,-0.672 1.5,-1.5Z"></path>
-            </g>
-          </svg>
-
-          {showMenu &&
-            selectedProject &&
-            selectedProject.id === project.id && (
-              <div className="absolute -right-24 top-4 bg-white rounded-md shadow-md z-10 ri">
-                <ul className="p-2">
-                  <li
-                    onClick={handleDeleteProject}
-                    className="hover:bg-[#ff5c5c] hover:text-white cursor-pointer p-2"
-                  >
-                    Delete
-                  </li>
-                  <Link
-                    to="/SP-Dashboard/dashboard/projects/board"
-                    onClick={handleGoToBoard}
-                    className="hover:bg-[#84be82] hover:text-white cursor-pointer p-2"
-                  >
-                    Go Board
-                  </Link>
-                </ul>
-              </div>
-            )}
-        </div>
-      </div>
-    </div>
-  ))}
-</div>
-</div>*/

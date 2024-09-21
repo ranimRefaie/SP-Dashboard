@@ -2,8 +2,11 @@ import { useState } from "react";
 import avatar from "../../assets/3d_avatar_26.png";
 import { IoIosArrowDown } from "react-icons/io";
 import { BsBoxArrowInRight } from "react-icons/bs";
+import { useSidebar } from "../../Context/Context";
+import { FaAlignLeft } from "react-icons/fa";
 
 const Navbar = () => {
+  const { expanded, setExpanded } = useSidebar();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -11,8 +14,18 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full fixed h-[40px] border-b border-[#EFEFEF] bg-white">
-      <div className="relative flex w-[95%] h-full justify-end items-center  text-[#424242]">
+    <div
+      className={`fixed right-0 h-[40px] border-b border-[#EFEFEF] bg-white ${
+        expanded ? "left-64" : "left-20"
+      }`}
+    >
+      <div className=" flex w-[90%] h-full justify-between items-center  text-[#424242] mx-auto">
+        <button
+          onClick={() => setExpanded((x) => !x)}
+          className=" rounded-lg  text-[#424242]"
+        >
+          <FaAlignLeft size={20} />
+        </button>
         <div className="flex gap-3 items-center text-[#424242]">
           <div className="w-[35px] h-[35px] rounded-full object-contain">
             <img

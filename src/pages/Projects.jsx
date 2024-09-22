@@ -1,7 +1,7 @@
 import Sidebar from "../Components/Sidebar/Sidebar";
 import Navbar from "../Components/Navbar/Navbar";
 import img_card from "../assets/638a92cf349604581a35fe75_263a75529a1752b75d64f9f21fd07c92-3-2.jpeg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { AiOutlineMore } from "react-icons/ai";
 import { VscAdd } from "react-icons/vsc";
@@ -10,6 +10,7 @@ import avatar from "../assets/3d_avatar_26.png";
 
 const Projects = () => {
   const { expanded, setExpanded } = useSidebar();
+  const navigat = useNavigate();
   const [projects, setProjects] = useState([
     { id: 1, name: "project 1", status: "At Risk" },
   ]);
@@ -60,7 +61,9 @@ const Projects = () => {
               <div
                 key={project.id}
                 className="bg-[#ffffff] cursor-pointer w-80 shadow-lg rounded-xl mt-4 pb-3"
-                onClick={() => handleMenuToggle(project)}
+                onDoubleClick={() => {
+                  navigat(`/SP-Dashboard/dashboard/projects ${project.id}`);
+                }}
               >
                 <img
                   src={img_card}
@@ -83,7 +86,10 @@ const Projects = () => {
                     </div>
                   </div>
                   <div className="relative pr-2">
-                    <AiOutlineMore />
+                    <span onClick={() => handleMenuToggle(project)}>
+                      <AiOutlineMore />
+                    </span>
+
                     {showMenu &&
                       selectedProject &&
                       selectedProject.id === project.id && (

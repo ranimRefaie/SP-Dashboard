@@ -4,6 +4,7 @@ import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import Projects from "./pages/Projects";
 import Board from "./pages/Board";
+import { ProjectDet } from "./pages/projectDet";
 const router = createBrowserRouter([
   {
     path: "/SP-Dashboard",
@@ -19,11 +20,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/SP-Dashboard/dashboard/projects",
-    element: <Projects/>
+    element: <Projects />,
   },
   {
     path: "/SP-Dashboard/dashboard/projects/board",
-    element: <Board/>
+    element: <Board />,
+  },
+  {
+    path: "/SP-Dashboard/dashboard/projects 1",
+    element: <ProjectDet />,
   },
 ]);
 

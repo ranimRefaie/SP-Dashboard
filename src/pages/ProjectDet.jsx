@@ -18,38 +18,31 @@ export const ProjectDet = () => {
           <div className="w-[80%] mx-auto">
             <Accordion activeIndex={0}>
               <AccordionTab
-                header="project 1"
+                header={
+                  <div className="flex gap-1">
+                    <FaRegHourglassHalf size={25} /> Progress
+                  </div>
+                }
                 className="text-3xl text-customBlack"
-              >
-                <div className="flex flex-col gap-4 ml-14">
-                  <div className="">
-                    <div className="flex items-center gap-1 text-2xl">
-                      <span>
-                        <FaRegHourglassHalf size={20} />
-                      </span>
-                      <h3>Progress</h3>
-                    </div>
-                    {/* <ul>
-                      <li className="">lorem</li>
-                    </ul> */}
-                  </div>
-                  <div className="flex items-center gap-1 text-2xl">
-                    <span>
-                      <FaTasks size={20} />
-                    </span>
+              ></AccordionTab>
 
-                    <h3>To Do</h3>
+              <AccordionTab
+                header={
+                  <div className="flex gap-1" id="todo">
+                    <FaTasks size={25} /> To Do
                   </div>
+                }
+                className="text-3xl text-customBlack"
+              ></AccordionTab>
 
-                  <div className="flex items-center gap-1 text-2xl">
-                    <span>
-                      <AiOutlineCheckCircle size={20} />
-                    </span>
-
-                    <h3>Completed</h3>
+              <AccordionTab
+                header={
+                  <div className="flex gap-1" id="complate">
+                    <AiOutlineCheckCircle size={25} /> Completed
                   </div>
-                </div>
-              </AccordionTab>
+                }
+                className="text-3xl text-customBlack"
+              ></AccordionTab>
             </Accordion>
           </div>
         </div>

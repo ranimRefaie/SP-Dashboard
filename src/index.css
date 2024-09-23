@@ -12,20 +12,26 @@ body {
 @tailwind components;
 @tailwind utilities;
 
-.p-accordion-header-text:after {
+.p-accordion-header-text div:after {
     position: absolute;
     content: '';
     width: 80%;
     height: 5px;
     background-color: rgba(0, 163, 255, 1);
     top: 35px;
-    right: 35px;
+    right: 0px;
     border-radius: 5px;
 }
 
-/* li {
-    list-style: outside;
-} */
+.p-accordion-header-text #todo:last-child::after {
+    right: 40px;
+}
+
+.p-accordion-header-text #complate:last-child::after {
+    right: -30px;
+}
+
+
 
 .p-accordion-content {
     background-color: #f8f9fa;

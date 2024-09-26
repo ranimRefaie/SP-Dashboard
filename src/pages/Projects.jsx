@@ -101,13 +101,6 @@ const Projects = () => {
                             >
                               Delete
                             </li>
-                            <Link
-                              to="/SP-Dashboard/dashboard/projects/board"
-                              onClick={handleGoToBoard}
-                              className="hover:bg-[#84be82] hover:text-white cursor-pointer p-2"
-                            >
-                              Go Board
-                            </Link>
                           </ul>
                         </div>
                       )}

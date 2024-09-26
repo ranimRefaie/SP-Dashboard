@@ -45,7 +45,7 @@ const Navbar = () => {
             </div>
 
             {isOpen && (
-              <div className="absolute flex  items-center right-0 z-10 mt-2 w-60 rounded-md shadow-lg bg-white  border border-[#EFEFEF] px-2">
+              <div className="absolute flex  items-center right-0 z-20 mt-2 w-60 rounded-md shadow-lg bg-white  border border-[#EFEFEF] px-2">
                 <div className="w-[45px] h-[45px] rounded-full object-contain">
                   <img
                     src={avatar}

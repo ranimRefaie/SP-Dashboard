@@ -12,7 +12,6 @@ import { AiOutlineMore } from "react-icons/ai";
 import { VscAdd } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 
-import { ProgressBar } from 'primereact/progressbar';
         
 
 export const ProjectDet = () => {
@@ -23,8 +22,8 @@ export const ProjectDet = () => {
       <Sidebar />
       <div className="w-full">
         <Navbar />
-        <div className={`flex flex-col mt-20  ${expanded ? "ml-64" : "ml-20"}`}>
-          <div className="w-[80%] mx-auto">
+        <div className={`flex flex-col mt-28  ${expanded ? "ml-64" : "ml-20"}`}>
+          <div className="w-[90%] mx-auto">
             <Accordion activeIndex={0}>
               <AccordionTab
                 header={
@@ -114,12 +113,12 @@ export const CardService = () => {
     }
   };
   return (
-    <div>
-      <div className={`flex-wrap  flex gap-4 pt-8 ml-10`}>
+
+      <div className={`w-full flex-wrap flex gap-4 pt-8 ml-10`}>
         {projects.map((project) => (
           <div
             key={project.id}
-            className="bg-[#ffffff] cursor-pointer w-64 shadow-lg rounded-xl mt-4 pb-3"
+            className="bg-[#ffffff] cursor-pointer w-56 shadow-lg rounded-xl mt-4 pb-3"
           >
             <div className="flex flex-col p-3 gap-3">
               <div className="flex justify-between">
@@ -152,24 +151,23 @@ export const CardService = () => {
                     )}
                 </div>
               </div>
-              <div className="flex  items-center ml-3">
+              <div className="w-full flex flex-col  items-center ml-3">
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
                   fugit, asperiores facere delectus repellat esse.
                 </p>
 
-                <ProgressBar value={50}></ProgressBar>
+               
               </div>
             </div>
           </div>
         ))}
         <button
           onClick={addProject}
-          className="w-64 h-[220px] flex justify-center items-center bg-[#ffffff]  shadow-lg rounded-xl cursor-pointer mt-4"
+          className="w-56 h-[220px] flex justify-center items-center bg-[#ffffff]  shadow-lg rounded-xl cursor-pointer mt-4"
         >
           <VscAdd size={70} />
         </button>
       </div>
-    </div>
   );
 };

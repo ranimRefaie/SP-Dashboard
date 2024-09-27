@@ -1,6 +1,6 @@
 import { useSidebar } from "../Context/Context";
 import Sidebar from "../Components/Sidebar/Sidebar";
-import Navbar from "../Components/Navbar/Navbar";
+import {Navbar} from "../Components/Navbar/Navbar";
 import { Accordion, AccordionTab } from "primereact/accordion";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import { FaRegHourglassHalf } from "react-icons/fa6";
@@ -18,7 +18,7 @@ export const ProjectDet = () => {
   const { expanded } = useSidebar();
 
   return (
-    <div className="w-full flex">
+   <div className="w-full flex">
       <Sidebar />
       <div className="w-full">
         <Navbar />
@@ -70,7 +70,7 @@ export const ProjectDet = () => {
                 <CardService />
               </AccordionTab>
             </Accordion>
-          </div>
+           </div>
         </div>
       </div>
     </div>

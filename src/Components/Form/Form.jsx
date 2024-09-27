@@ -18,9 +18,9 @@ export const Input = ({ type, placeholder }) => {
   );
 };
 
-export const DropDown = () => {
+export const DropDown = ({title}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Choose Your Direction");
+  const [selectedOption, setSelectedOption] = useState(title);
 
   const options = ["Frontend", "Backend", "UI/UX"];
 
@@ -38,7 +38,7 @@ export const DropDown = () => {
     <div className="w-64 relative inline-block text-left">
       <div>
         <button
-          type="button" // تأكد من أن النوع هو "button"
+          type="button" 
           onClick={toggleDropdown}
           className=" inline-flex justify-between w-full rounded border border-customgray px-4 py-2 bg-white text-sm font-medium text-gray-400 hover:bg-gray-50 focus:outline-none ring-2 ring-[transparent] focus:ring-[#93c5fd]"
         >

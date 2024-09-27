@@ -1,5 +1,5 @@
 import Sidebar from "../Components/Sidebar/Sidebar";
-import Navbar from "../Components/Navbar/Navbar";
+import {Navbar} from "../Components/Navbar/Navbar";
 import img_card from "../assets/638a92cf349604581a35fe75_263a75529a1752b75d64f9f21fd07c92-3-2.jpeg";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";

@@ -51,7 +51,7 @@ const SignUp = () => {
 
             <div className="flex flex-col  gap-3 ">
               <Label labelName="Specialty" />
-             <DropDown/>
+             <DropDown title='Choose Your Direction'/>
             </div>
           </div>
 

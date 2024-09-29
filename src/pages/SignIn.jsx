@@ -27,7 +27,7 @@ const SignIn = () => {
         </div>
        
         <Link
-          to="/SP-Dashboard/dashboard"
+          to="/dashboard"
           className="w-1/2 bg-customBlue text-slate-50 py-3 text-center rounded text-base font-medium"
         >
           Sign in
@@ -36,7 +36,7 @@ const SignIn = () => {
         <div className="flex w-1/2 justify-center gap-2">
           <p>Don't have account?</p>
           <Link
-          to="/SP-Dashboard/sign-up"
+          to="/sign-up"
           className=" underline text-customBlue"
         >
           Create One

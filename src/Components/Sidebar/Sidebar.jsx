@@ -22,7 +22,7 @@ export default function Sidebar({ children }) {
   const Item_Sidebar = [
     {
       id: 1,
-      path: "/SP-Dashboard/dashboard",
+      path: "/dashboard",
       name: "Dashboard",
       icon: <MdOutlineDashboard size={20} />,
     },
@@ -34,7 +34,7 @@ export default function Sidebar({ children }) {
     },
     {
       id: 3,
-      path: "/SP-Dashboard/dashboard/projects",
+      path: "/dashboard/projects",
       name: "Projects",
       icon: <LiaProjectDiagramSolid size={20} />,
     },

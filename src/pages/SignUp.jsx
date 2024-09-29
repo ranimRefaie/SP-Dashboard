@@ -70,7 +70,7 @@ const SignUp = () => {
 
      <div className="w-full flex flex-col gap-5">
      <Link
-          to="/SP-Dashboard/overview"
+          to="/sign-up"
           className="w-3/5 mx-auto bg-customBlue text-slate-50 py-3 text-center rounded text-base font-medium leading-6"
         >
           Sign up
@@ -79,7 +79,7 @@ const SignUp = () => {
         <div className="flex  justify-center gap-2">
           <p>Already have an account?</p>
           <Link
-          to="/SP-Dashboard"
+          to="/"
           className=" underline text-customBlue"
         >
           Sign in

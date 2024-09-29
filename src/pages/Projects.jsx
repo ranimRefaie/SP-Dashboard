@@ -62,7 +62,7 @@ const Projects = () => {
                 key={project.id}
                 className="bg-[#ffffff] cursor-pointer w-80 shadow-lg rounded-xl mt-4 pb-3"
                 onDoubleClick={() => {
-                  navigat(`/SP-Dashboard/dashboard/projects ${project.id}`);
+                  navigat(`/dashboard/projects ${project.id}`);
                 }}
               >
                 <img

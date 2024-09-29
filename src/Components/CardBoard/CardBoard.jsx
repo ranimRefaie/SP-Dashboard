@@ -17,7 +17,7 @@ export const CardBoard = () => {
       {cards.map((index) => (
         <div
           key={index.id}
-          className={`rounded-lg  w-96 mr-3 flex flex-col justify-start items-center p-2`}
+          className={`rounded-lg  mr-3 flex flex-col justify-start items-center p-2`}
           style={{ background: index.bg }}
         >
           <div className="flex justify-between w-[90%]">
@@ -26,8 +26,8 @@ export const CardBoard = () => {
               <IoAdd size={25} />
             </button>
           </div>
-          <div className="flex flex-col w-full my-4">
-            <div class="cursor-pointer bg-white w-full p-2 rounded-xl flex flex-col gap-2 border border-[#e5edf7]">
+          <div className="flex flex-col  my-4">
+            <div class="cursor-pointer bg-white  p-2 rounded-xl flex flex-col gap-2 border border-[#e5edf7]">
               <div class="flex items-center">
                 <div>
                   <input class="hidden complete" type="checkbox" />

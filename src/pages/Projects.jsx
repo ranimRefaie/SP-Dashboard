@@ -1,5 +1,5 @@
 import Sidebar from "../Components/Sidebar/Sidebar";
-import {Navbar} from "../Components/Navbar/Navbar";
+import { Navbar } from "../Components/Navbar/Navbar";
 import img_card from "../assets/638a92cf349604581a35fe75_263a75529a1752b75d64f9f21fd07c92-3-2.jpeg";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -50,7 +50,11 @@ const Projects = () => {
       <Sidebar />
       <div className="w-full">
         <Navbar />
-        <div className={`flex flex-col mt-20  ${expanded ? "ml-64" : "ml-20"}`}>
+        <div
+          className={`flex flex-col mt-[147px]  ${
+            expanded ? "ml-64" : "ml-20"
+          }`}
+        >
           <div className="ml-10">
             <h1 className="text-3xl font-extrabold py-6">Your Projects</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -62,7 +66,7 @@ const Projects = () => {
                 key={project.id}
                 className="bg-[#ffffff] cursor-pointer w-80 shadow-lg rounded-xl mt-4 pb-3"
                 onDoubleClick={() => {
-                  navigat(`/dashboard/projects ${project.id}`);
+                  navigat(`/projects ${project.id}`);
                 }}
               >
                 <img

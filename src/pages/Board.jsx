@@ -16,20 +16,21 @@ const Board = () => {
       <Sidebar />
       <div className="w-full">
         <Navbar />
-        <SubNavbar/>
-        <div className={`flex flex-col mt-28  ${expanded ? "ml-64" : "ml-20"}`}>
-      <CardBoard/>
+        <SubNavbar />
+        <div className={` mt-20  ${expanded ? "ml-64" : "ml-20"}`}>
+          <div className="w-[97%] mx-auto flex flex-col">
+            <CardBoard />
+          </div>
         </div>
       </div>
     </div>
-
   );
 };
 
 export default Board;
 
-
-{/* <div className="flex">
+{
+  /* <div className="flex">
 <Sidebar>
   <SidebarItem
     icon={<MdOutlineDashboard size={20} />}
@@ -135,4 +136,5 @@ export default Board;
   <div class="flex justify-between items-center w-[100%]  bg-white border-t-[1px] mt-2 p-1 pt-2"><div class="relative"><button class="cursor-pointer rounded-xl text-gray-500 text-sm p-2" id="basic-button" aria-haspopup="true">Primary Links  <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ArrowDropDownIcon"><path d="m7 10 5 5 5-5z"></path></svg></button></div><div class="flex  gap-2 w-[33%]"><div class="relative"><button class="cursor-pointer rounded-xl text-gray-500 text-sm p-2" id="basic-button" aria-haspopup="true">#Tags <svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="ArrowDropDownIcon"><path d="m7 10 5 5 5-5z"></path></svg></button></div><div class="relative w-[70%] "><input type="search" placeholder="Search task , name ,message" class="placeholder:text-[#A4A4A4] pl-10 w-full h-[32px] border rounded-[4px] text-xs font-normal  border-[#E6E6E6]" /><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" class="absolute top-[10%] left-1 text-[#A4A4A4]" height="20" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg></div></div></div>
   <CardBoard />
 </div>
-</div> */}
+</div> */
+}

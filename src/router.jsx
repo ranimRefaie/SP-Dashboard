@@ -1,10 +1,11 @@
-import { createBrowserRouter, createHashRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import Projects from "./pages/Projects";
 import Board from "./pages/Board";
 import { ProjectDet } from "./pages/projectDet";
+import { Analytics } from "./pages/Analytics";
 const router = createHashRouter([
   {
     path: "/",
@@ -19,16 +20,20 @@ const router = createHashRouter([
     element: <Dashboard />,
   },
   {
-    path: "/dashboard/projects",
+    path: "/projects",
     element: <Projects />,
   },
   {
-    path: "/dashboard/projects/board",
+    path: "/board",
     element: <Board />,
   },
   {
-    path: "/dashboard/projects 1",
+    path: "/projects 1",
     element: <ProjectDet />,
+  },
+  {
+    path: "/analytics",
+    element: <Analytics />,
   },
 ]);
 

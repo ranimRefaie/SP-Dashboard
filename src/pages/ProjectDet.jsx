@@ -1,6 +1,6 @@
 import { useSidebar } from "../Context/Context";
 import Sidebar from "../Components/Sidebar/Sidebar";
-import {Navbar} from "../Components/Navbar/Navbar";
+import { Navbar } from "../Components/Navbar/Navbar";
 import { Accordion, AccordionTab } from "primereact/accordion";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import { FaRegHourglassHalf } from "react-icons/fa6";
@@ -12,18 +12,20 @@ import { AiOutlineMore } from "react-icons/ai";
 import { VscAdd } from "react-icons/vsc";
 import { Link } from "react-router-dom";
 
-        
-
 export const ProjectDet = () => {
   const { expanded } = useSidebar();
 
   return (
-   <div className="w-full flex">
+    <div className="w-full flex">
       <Sidebar />
       <div className="w-full">
         <Navbar />
-        <div className={`flex flex-col mt-28  ${expanded ? "ml-64" : "ml-20"}`}>
-          <div className="w-[90%] mx-auto">
+        <div
+          className={`flex flex-col mt-[147px]  ${
+            expanded ? "ml-64" : "ml-20"
+          }`}
+        >
+          <div className="w-[94%] mx-auto">
             <Accordion activeIndex={0}>
               <AccordionTab
                 header={
@@ -70,7 +72,7 @@ export const ProjectDet = () => {
                 <CardService />
               </AccordionTab>
             </Accordion>
-           </div>
+          </div>
         </div>
       </div>
     </div>
@@ -113,61 +115,58 @@ export const CardService = () => {
     }
   };
   return (
+    <div className={`w-full flex-wrap flex gap-4 pt-8 ml-10`}>
+      {projects.map((project) => (
+        <div
+          key={project.id}
+          className="bg-[#ffffff] cursor-pointer w-56 shadow-lg rounded-xl mt-4 pb-3"
+        >
+          <div className="flex flex-col p-3 gap-3">
+            <div className="flex justify-between">
+              <li className="ml-3">Title</li>
+              <div className="relative">
+                <span onClick={() => handleMenuToggle(project)}>
+                  <AiOutlineMore />
+                </span>
 
-      <div className={`w-full flex-wrap flex gap-4 pt-8 ml-10`}>
-        {projects.map((project) => (
-          <div
-            key={project.id}
-            className="bg-[#ffffff] cursor-pointer w-56 shadow-lg rounded-xl mt-4 pb-3"
-          >
-            <div className="flex flex-col p-3 gap-3">
-              <div className="flex justify-between">
-                <li className="ml-3">Title</li>
-                <div className="relative">
-                  <span onClick={() => handleMenuToggle(project)}>
-                    <AiOutlineMore />
-                  </span>
-
-                  {showMenu &&
-                    selectedProject &&
-                    selectedProject.id === project.id && (
-                      <div className="absolute -right-24 top-4 bg-white rounded-md shadow-md z-10 ri">
-                        <ul className="p-2">
-                          <li
-                            onClick={handleDeleteProject}
-                            className="hover:bg-[#ff5c5c] hover:text-white cursor-pointer p-2"
-                          >
-                            Delete
-                          </li>
-                          <Link
-                            to="/dashboard/projects/board"
-                            onClick={handleGoToBoard}
-                            className="hover:bg-[#84be82] hover:text-white cursor-pointer p-2"
-                          >
-                            Go Board
-                          </Link>
-                        </ul>
-                      </div>
-                    )}
-                </div>
-              </div>
-              <div className="w-full flex flex-col  items-center ml-3">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-                  fugit, asperiores facere delectus repellat esse.
-                </p>
-
-               
+                {showMenu &&
+                  selectedProject &&
+                  selectedProject.id === project.id && (
+                    <div className="absolute -right-24 top-4 bg-white rounded-md shadow-md z-10 ri">
+                      <ul className="p-2">
+                        <li
+                          onClick={handleDeleteProject}
+                          className="hover:bg-[#ff5c5c] hover:text-white cursor-pointer p-2"
+                        >
+                          Delete
+                        </li>
+                        <Link
+                          to="/board"
+                          onClick={handleGoToBoard}
+                          className="hover:bg-[#84be82] hover:text-white cursor-pointer p-2"
+                        >
+                          Go Board
+                        </Link>
+                      </ul>
+                    </div>
+                  )}
               </div>
             </div>
+            <div className="w-full flex flex-col  items-center ml-3">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
+                fugit, asperiores facere delectus repellat esse.
+              </p>
+            </div>
           </div>
-        ))}
-        <button
-          onClick={addProject}
-          className="w-56 h-[220px] flex justify-center items-center bg-[#ffffff]  shadow-lg rounded-xl cursor-pointer mt-4"
-        >
-          <VscAdd size={70} />
-        </button>
-      </div>
+        </div>
+      ))}
+      <button
+        onClick={addProject}
+        className="w-56 h-[220px] flex justify-center items-center bg-[#ffffff]  shadow-lg rounded-xl cursor-pointer mt-4"
+      >
+        <VscAdd size={70} />
+      </button>
+    </div>
   );
 };

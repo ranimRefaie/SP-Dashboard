@@ -2,7 +2,7 @@ import { useContext, createContext, useState } from "react";
 import { BsBoxArrowInRight } from "react-icons/bs";
 import logo from "../../assets/logo.svg";
 import min_logo from "../../assets/sm-logo.png";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const SidebarContext = createContext();
 import { MdSettings } from "react-icons/md";
 import { IoMdHelpCircleOutline } from "react-icons/io";
@@ -28,25 +28,25 @@ export default function Sidebar({ children }) {
     },
     {
       id: 2,
-      path: "",
+      path: "/analytics",
       name: "Analytics",
       icon: <TbBrandGoogleAnalytics size={20} />,
     },
     {
       id: 3,
-      path: "/dashboard/projects",
+      path: "/projects",
       name: "Projects",
       icon: <LiaProjectDiagramSolid size={20} />,
     },
     {
       id: 4,
-      path: "",
+      path: "/stand-up",
       name: "Stand Up",
       icon: <MdOutlineDashboard size={20} />,
     },
     {
       id: 5,
-      path: "",
+      path: "/financial-dues",
       name: "Financial dues",
       icon: <TbBusinessplan size={20} />,
     },
@@ -76,16 +76,16 @@ export default function Sidebar({ children }) {
         <div className="mx-6">
           <ul className=" ">
             {Item_Sidebar.map((link, index) => (
-              <Link
-                key={index}
+              <NavLink
+                key={link.id}
                 to={link.path}
-                className={`relative flex items-center py-2 px-3 my-1 justify-center font-medium rounded-md cursor-pointer transition-colors group mt-4 text-[#424242]   ${
-                  activeLink === index
-                    ? "bg-sky-400 text-[#ffffff]"
-                    : "hover:bg-[#EFEFEF] hover:text-[#424242]"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? "relative flex items-center py-2 px-3 my-1 justify-center font-medium rounded-md cursor-pointer transition-colors group mt-4 text-[#ffffff] bg-sky-400"
+                    : "relative flex items-center py-2 px-3 my-1 justify-center font-medium rounded-md cursor-pointer transition-colors group mt-4 text-[#424242] hover:bg-[#EFEFEF] hover:text-[#424242]"
                 }
-                `}
-                onClick={() => handleLinkClick(index)}
               >
                 <span>{link.icon}</span>
                 <span
@@ -95,7 +95,7 @@ export default function Sidebar({ children }) {
                 >
                   {link.name}
                 </span>
-              </Link>
+              </NavLink>
             ))}
           </ul>
 

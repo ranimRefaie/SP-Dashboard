@@ -19,7 +19,7 @@ export const Navbar = () => {
         expanded ? "left-64" : "left-20"
       }`}
     >
-      <div className=" flex w-[90%] h-full justify-between items-center  text-[#424242] mx-auto">
+      <div className=" flex w-[94%] h-full justify-between items-center  text-[#424242] mx-auto">
         <button
           onClick={() => setExpanded((x) => !x)}
           className=" rounded-lg  text-[#424242]"

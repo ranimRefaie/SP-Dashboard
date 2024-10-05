@@ -24,11 +24,11 @@ const router = createHashRouter([
     element: <Projects />,
   },
   {
-    path: "/board",
+    path: "/projects/board",
     element: <Board />,
   },
   {
-    path: "/projects 1",
+    path: "/projects/projects 1",
     element: <ProjectDet />,
   },
   {

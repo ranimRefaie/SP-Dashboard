@@ -141,7 +141,7 @@ export const CardService = () => {
                           Delete
                         </li>
                         <Link
-                          to="/board"
+                          to="/projects/board"
                           onClick={handleGoToBoard}
                           className="hover:bg-[#84be82] hover:text-white cursor-pointer p-2"
                         >

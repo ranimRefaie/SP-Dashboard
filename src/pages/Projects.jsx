@@ -66,7 +66,7 @@ const Projects = () => {
                 key={project.id}
                 className="bg-[#ffffff] cursor-pointer w-80 shadow-lg rounded-xl mt-4 pb-3"
                 onDoubleClick={() => {
-                  navigat(`/projects ${project.id}`);
+                  navigat(`/projects/projects ${project.id}`);
                 }}
               >
                 <img
